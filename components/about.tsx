@@ -1,17 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function About() {
+  const ref = useRef(null);
+
   return (
     <section className="max-w-4xl mx-auto px-4 py-12">
       <motion.div
-        className="grid lg:grid-cols-2 gap-8 items-center"
+        className="grid lg:grid-cols-2 gap-8 items-center scroll-mt-28"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        id="about"
+        ref={ref}
+        
       >
         <div className="space-y-6">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -27,9 +32,7 @@ export default function About() {
               , I decided to pursue my passion for programming. I enrolled in a coding 
               bootcamp and learned{" "}
               <span className="font-medium text-gray-900 dark:text-white">
-                full-stack web development
-              </span>
-              .
+              full-stack web development </span>
             </p>
 
             <p>
@@ -85,7 +88,6 @@ export default function About() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Add your image here */}
           <Image
                 src="/coding.avif"
                 alt="Profile picture"
