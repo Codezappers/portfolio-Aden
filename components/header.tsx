@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useContext, useState } from 'react'
+import React, {useContext, useState } from 'react'
 import {motion} from 'framer-motion'
 import { links } from '@/lib/data';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-context';
 
 export default function header() {
-  const {activeSection, setActiveSection} = useActiveSectionContext();
+  const {activeSection, setActiveSection,setTimeOfLastClick} = useActiveSectionContext();
 
   return (
     <header className='z-[999] relative'>
@@ -34,7 +34,10 @@ export default function header() {
                 }
               )}
               href={link.hash}
-              onClick={() => setActiveSection(link.name)}
+              onClick={() => {
+                setActiveSection(link.name)
+                setTimeOfLastClick(Date.now())
+              }}
             >
               <div className="flex items-center justify-center">
                 {link.name}

@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef } from "react";
 import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
+import { useSectionInView } from "@/lib/hooks";
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -62,9 +62,11 @@ function Project({ title, description, tags, imageUrl }: ProjectProps) {
   );
 }
 
-export default function Projects() {
+function Projects() {
+  const {ref} = useSectionInView("Projects", 0.5);
+
   return (
-    <section id="projects" className="scroll-mt-28 mb-28">
+    <section ref={ref} id="projects" className="scroll-mt-28 mb-28">
       <h2 className="text-3xl font-medium capitalize mb-8 text-center text-white">
         My Projects
       </h2>
@@ -78,3 +80,5 @@ export default function Projects() {
     </section>
   );
 }
+
+export default Projects;

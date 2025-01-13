@@ -1,22 +1,20 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function About() {
-  const ref = useRef(null);
+  const {ref} = useSectionInView("About", 0.5);
 
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
-      <motion.div
-        className="grid lg:grid-cols-2 gap-8 items-center scroll-mt-28"
+    <motion.section className="max-w-4xl mx-auto px-4 py-12 grid lg:grid-cols-2 gap-8 items-center scroll-mt-28"
+        ref = {ref}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        id="about"
-        ref={ref}
-        
+        id="about"   
       >
         <div className="space-y-6">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -83,21 +81,21 @@ export default function About() {
         </div>
 
         <motion.div
-          className="relative w-full aspect-square max-w-[400px] mx-auto lg:ml-auto"
+          className="relative w-full aspect-square max-w-[400px] mx-auto lg:ml-auto rounded-lg overflow-hidden shadow-lg"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
           <Image
-                src="/coding.avif"
-                alt="Profile picture"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 400px"
-                priority
-              />
+            src="/coding.avif"
+            alt="Profile picture"
+            layout="fill"
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 400px"
+            priority
+          />
         </motion.div>
-      </motion.div>
-    </section>
+    </motion.section>
   );
 }
+
