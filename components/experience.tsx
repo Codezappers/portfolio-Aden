@@ -2,13 +2,18 @@
 
 import React from 'react'
 import SectionHeading from './section-heading'
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import { 
+    VerticalTimeline, VerticalTimelineElement 
+}  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css' 
 import { experiencesData } from '@/lib/data';
 import { useSectionInView } from '@/lib/hooks';
+import { useTheme } from "@/context/theme-context";
 
 export default function Experience() {
     const { ref } = useSectionInView("Experience", 0.5)
+    const { theme } = useTheme();
+
   return (
     <section 
     id='experience'
@@ -27,13 +32,17 @@ export default function Experience() {
                             padding: "1.3rem 2rem",
                        }}
                           contentArrowStyle={{ 
-                            borderRight: '7px solid  #fda085' 
+                            borderRight:
+                            theme === "light"
+                            ? "0.4rem solid #9ca3af"
+                    : "0.4rem solid rgba(255, 255, 255, 0.5)", 
                         }}
                         date={item.date}
                         dateClassName='text-black dark:text-white'
                         icon={item.icon}
                         iconStyle={{
-                            background: '#fda085',
+                            background:
+                            theme === "light"? "white": "rgba(255, 255, 255, 0.15)",
                             color: '#000',
                             boxShadow: 'none',
                             border: "1px solid rgba(0, 0, 0, 0.05)",
