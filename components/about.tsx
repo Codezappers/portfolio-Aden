@@ -89,7 +89,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
         >
           <Image
-            src="/coding.avif"
+            src="/coding.png"
             alt="Profile picture"
             layout="fill"
             className="object-cover"
