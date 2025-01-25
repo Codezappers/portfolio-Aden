@@ -5,6 +5,7 @@ import SectionHeading from "./section-heading";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
+import coding from "@/public/coding.avif";
 
 export default function About() {
   const {ref} = useSectionInView("About", 0.5);
